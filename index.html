@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | SpaceDasher</title>
+    <title>Unity WebGL Player | Orblitz</title>
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
-    <canvas id="unity-canvas" width=540 height=960 tabindex="-1" style="width: 540px; height: 960px; background: #231F20"></canvas>
+    <canvas id="unity-canvas" width=600 height=960 tabindex="-1" style="width: 600px; height: 960px; background: #231F20"></canvas>
     <script src="Build/ais-ms-mg-test.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
@@ -25,13 +25,13 @@
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/ais-ms-mg-test.data.unityweb",
-        frameworkUrl: "Build/ais-ms-mg-test.framework.js.unityweb",
-        codeUrl: "Build/ais-ms-mg-test.wasm.unityweb",
+        dataUrl: "Build/ais-ms-mg-test.data.br",
+        frameworkUrl: "Build/ais-ms-mg-test.framework.js.br",
+        codeUrl: "Build/ais-ms-mg-test.wasm.br",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "SpaceDasher",
-        productVersion: "1.0.2",
+        companyName: "Astra Interactive Games",
+        productName: "Orblitz",
+        productVersion: "0.4.0",
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       });
