@@ -6,7 +6,7 @@
     <title>Unity WebGL Player | Orblitz</title>
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
-    <canvas id="unity-canvas" width=600 height=960 tabindex="-1" style="width: 600px; height: 960px; background: #231F20"></canvas>
+    <canvas id="unity-canvas" width=540 height=960 tabindex="-1" style="width: 540px; height: 960px; background: #231F20"></canvas>
     <script src="Build/ais-ms-mg-test.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
@@ -25,9 +25,9 @@
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/ais-ms-mg-test.data.br",
-        frameworkUrl: "Build/ais-ms-mg-test.framework.js.br",
-        codeUrl: "Build/ais-ms-mg-test.wasm.br",
+        dataUrl: "Build/ais-ms-mg-test.data",
+        frameworkUrl: "Build/ais-ms-mg-test.framework.js",
+        codeUrl: "Build/ais-ms-mg-test.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Astra Interactive Games",
         productName: "Orblitz",
