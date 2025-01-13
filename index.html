@@ -10,8 +10,7 @@
         if (message.type === "gameScore") {
           console.log("Game Score from Unity:", message.score);
 
-          // Example: Send the score to your app or server
-          fetch('/save-score', { method: 'POST', body: JSON.stringify(message) });
+          fetch('http://localhost:3000/clicker', { method: 'POST', body: JSON.stringify(message) });
         }
       };
     </script>
