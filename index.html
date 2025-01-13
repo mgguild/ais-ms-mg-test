@@ -11,7 +11,7 @@
           console.log("Game Score from Unity:", message.score);
 
           // Example: Send the score to your app or server
-          // fetch('/save-score', { method: 'POST', body: JSON.stringify(message) });
+          fetch('/save-score', { method: 'POST', body: JSON.stringify(message) });
         }
       };
     </script>
