@@ -9,7 +9,7 @@
       // Listen for messages from Unity or other windows
       window.addEventListener('message', async function (event) {
         // Validate the origin if needed for security (replace with your expected origin)
-        if (event.origin !== 'https://www.metagg.com' && event.origin !== 'http://localhost:3000') {
+        if (event.origin !== 'https://www.metagg.com') {
           console.warn('Blocked message from untrusted origin:', event.origin);
           return;
         }
