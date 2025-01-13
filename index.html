@@ -6,13 +6,42 @@
     <title>Unity WebGL Player | Orblitz</title>
     <script>
       // JavaScript function to handle Unity messages
-      window.postMessage = function (message) {
+      // Listen for messages from Unity or other windows
+      window.addEventListener('message', async function (event) {
+        // Validate the origin if needed for security (replace with your expected origin)
+        if (event.origin !== 'http://your-allowed-origin.com' && event.origin !== 'http://localhost:3000') {
+          console.warn('Blocked message from untrusted origin:', event.origin);
+          return;
+        }
+
+        const message = event.data;
+
+        // Process messages of type "gameScore"
         if (message.type === "gameScore") {
           console.log("Game Score from Unity:", message.score);
 
-          fetch('http://localhost:3000/clicker', { method: 'POST', body: JSON.stringify(message) });
+          try {
+            // Send the data to your server
+            const response = await fetch('http://localhost:3000/clicker', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(message),
+            });
+
+            // Check for a successful response
+            if (!response.ok) {
+              console.error('Failed to send game score:', response.status, response.statusText);
+            } else {
+              console.log('Game score successfully sent to server');
+            }
+          } catch (error) {
+            console.error('Fetch error:', error);
+          }
         }
-      };
+      });
+
     </script>
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
