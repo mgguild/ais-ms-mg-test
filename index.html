@@ -18,10 +18,10 @@
     
         // Process messages of type "gameScore"
         if (message.type === "gameScore") {
-          console.log("Score from Unity:", message.score);
+          console.log("New Score from Unity:", message.score);
     
           // Check if required fields are present
-          if (!message.initData || typeof message.score !== 'number') {
+          if (typeof message.score !== 'number') {
             console.error('Invalid message data:', message);
             return;
           }
@@ -34,7 +34,6 @@
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify({
-                initData: message.initData,
                 score: message.score,
               }),
             });
