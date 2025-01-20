@@ -9,7 +9,7 @@
       // Listen for messages from Unity or other windows
       window.addEventListener('message', async function (event) {
         // Validate the origin if needed for security (replace with your expected origin)
-        if (event.origin !== 'https://www.metagg.com') {
+        if (event.origin !== 'https://www.metagg.com/ais-ms-mg-test/') {
           console.warn('Blocked message from untrusted origin:', event.origin);
           return;
         }
@@ -18,7 +18,7 @@
     
         // Process messages of type "gameScore"
         if (message.type === "gameScore") {
-          console.log("Send Score from Unity:", message.score);
+          console.log("RESend Score from Unity:", message.score);
     
           // Check if required fields are present
           if (typeof message.score !== 'number') {
