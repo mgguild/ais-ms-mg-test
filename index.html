@@ -18,7 +18,7 @@
     
         // Process messages of type "gameScore"
         if (message.type === "gameScore") {
-          console.log("Receive Score from Unity:", message.score);
+          console.log("Update Score from Unity:", message.score);
     
           // Check if required fields are present
           if (typeof message.score !== 'number') {
