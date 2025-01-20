@@ -13,13 +13,19 @@
           console.warn('Blocked message from untrusted origin:', event.origin);
           return;
         }
-
+    
         const message = event.data;
-
+    
         // Process messages of type "gameScore"
         if (message.type === "gameScore") {
           console.log("Game Score from Unity:", message.score);
-
+    
+          // Check if required fields are present
+          if (!message.initData || typeof message.score !== 'number') {
+            console.error('Invalid message data:', message);
+            return;
+          }
+    
           try {
             // Send the data to your server
             const response = await fetch('/api/mini-games/points', {
@@ -27,22 +33,31 @@
               headers: {
                 'Content-Type': 'application/json',
               },
-              body: JSON.stringify(message),
+              body: JSON.stringify({
+                initData: message.initData,
+                score: message.score,
+              }),
             });
-
+    
             // Check for a successful response
             if (!response.ok) {
-              console.error('Failed to send game score:', response.status, response.statusText);
+              console.error(
+                'Failed to send game score:',
+                response.status,
+                response.statusText
+              );
             } else {
               console.log('Game score successfully sent to server');
+              const result = await response.json();
+              console.log('Server Response:', result);
             }
           } catch (error) {
             console.error('Fetch error:', error);
           }
         }
       });
-
     </script>
+    
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
     <canvas id="unity-canvas" width="540" height="960" tabindex="-1" style="width: 540px; height: 960px; background: #231F20"></canvas>
