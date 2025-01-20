@@ -18,11 +18,11 @@
 
         // Process messages of type "gameScore"
         if (message.type === "gameScore") {
-          console.log("Game Score from Unity:", message.score);
+          console.log("Score from Unity:", message.score);
 
           try {
             // Send the data to your server
-            const response = await fetch('http://localhost:3000/clicker/api/mini-games/submit-score', {
+            const response = await fetch('http://localhost:3000/clicker/api/mini-games/points', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
