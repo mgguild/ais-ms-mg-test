@@ -22,7 +22,7 @@
 
           try {
             // Send the data to your server
-            const response = await fetch('http://localhost:3000/clicker', {
+            const response = await fetch('/api/mini-games/submit-score', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
