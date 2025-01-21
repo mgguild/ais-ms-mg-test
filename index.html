@@ -4,60 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | Orblitz</title>
-    <script>
-      // JavaScript function to handle Unity messages
-      // Listen for messages from Unity or other windows
-      window.addEventListener('message', async function (event) {
-        // Validate the origin if needed for security (replace with your expected origin)
-        if (event.origin !== 'https://www.metagg.com') {
-          console.warn('Blocked message from untrusted origin:', event.origin);
-          return;
-        }
-    
-        const message = event.data;
-    
-        // Process messages of type "gameScore"
-        if (message.type === "gameScore") {
-          console.log("RESend Score from Unity:", message.score);
-    
-          // Check if required fields are present
-          if (typeof message.score !== 'number') {
-            console.error('Invalid message data:', message);
-            return;
-          }
-    
-          try {
-            // Send the data to your server
-            const response = await fetch('https://7ab5-136-158-100-188.ngrok-free.app/clicker', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                score: message.score,
-              }),
-            });
-            console.log(message.score); // Check if this is a valid number
-
-            // Check for a successful response
-            if (!response.ok) {
-              console.error(
-                'Failed to send game score:',
-                response.status,
-                response.statusText
-              );
-            } else {
-              console.log('Game score successfully sent to server');
-              const result = await response.json();
-              console.log('Server Response:', result);
-            }
-          } catch (error) {
-            console.error('Fetch error:', error);
-          }
-        }
-      });
-    </script>
-    
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
     <canvas id="unity-canvas" width="540" height="960" tabindex="-1" style="width: 540px; height: 960px; background: #231F20"></canvas>
