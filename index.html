@@ -7,25 +7,6 @@
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
     <canvas id="unity-canvas" width="540" height="960" tabindex="-1" style="width: 540px; height: 960px; background: #231F20"></canvas>
-    <script>
-      function sendScoreToMiniApp(score) {
-        // Make a POST request to the mini-app endpoint
-        fetch("https://ef69-136-158-100-188.ngrok-free.app/clicker", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ score: score })
-        })
-          .then(response => response.json())
-          .then(data => {
-            console.log("Score sent successfully from index:", data);
-          })
-          .catch(error => {
-            console.error("Error sending score from index:", error);
-          });
-      }
-    </script>
     <script src="Build/ais-ms-mg-test.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
